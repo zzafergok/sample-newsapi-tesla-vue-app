@@ -19,16 +19,17 @@
           Read More
         </a>
 
-        <!-- {teslaItem.map((tItem, index) => {
-            if (tItem.title === item.title) {
-              return (
-                <div class="card-footer-left" key={index}>
-                  <span>Seen</span>
-                  <AiFillEye />
-                </div>
-              );
-            }
-          })} -->
+        <div
+          class="card-footer-left"
+          v-if="
+            this.storageTesla.find((val) => {
+              return val.title === item.title;
+            })
+          "
+        >
+          <span>Seen</span>
+          <img src="../assets/eye_solid.svg" alt="eye" />
+        </div>
       </div>
     </div>
   </div>
@@ -40,6 +41,7 @@ export default {
   name: "Item",
   props: {
     item: Object,
+    storageTesla: Array,
   },
   methods: {
     handleClick(item) {
@@ -58,6 +60,14 @@ img {
   max-width: 100%;
   display: block;
   object-fit: cover;
+}
+
+.footer-group-visible {
+  display: flex;
+}
+
+.footergrouphidden {
+  display: none;
 }
 
 .card-wrapper {
@@ -99,6 +109,7 @@ img {
       overflow: hidden;
       white-space: normal;
       height: 285px;
+      font-family: "Rokkitt", serif;
       h4 {
         font-size: 0.9rem;
         text-transform: capitalize;
@@ -111,13 +122,16 @@ img {
       margin-right: 1rem;
       margin-top: 1rem;
       height: 100%;
+      font-family: "Rokkitt", serif;
 
       &-left {
         display: flex;
-        align-items: flex-start;
+        align-items: center;
 
-        svg {
-          margin-left: 0.5rem;
+        img {
+          height: 12px;
+          width: 12px;
+          margin-left: 1rem;
         }
       }
       &-readMore {
@@ -131,5 +145,9 @@ img {
 .between {
   justify-content: space-between;
   align-items: flex-start;
+}
+
+.hidden {
+  visibility: hidden;
 }
 </style>
