@@ -40,7 +40,13 @@ export default {
     isExist: function () {
       if (
         window.location.pathname === "/" ||
-        window.location.pathname === "/category"
+        window.location.pathname === "/business" ||
+        window.location.pathname === "/entertainment" ||
+        window.location.pathname === "/general" ||
+        window.location.pathname === "/health" ||
+        window.location.pathname === "/science" ||
+        window.location.pathname === "/sports" ||
+        window.location.pathname === "/technology"
       ) {
         return true;
       } else {
