@@ -13,7 +13,7 @@
           </div>
         </div>
         <div class="col-7 navbar-brand-search" v-if="isExist">
-          <SearchBar />
+          <SearchBar @searchArray="handleSearch" />
         </div>
       </div>
     </div>
@@ -31,9 +31,17 @@ export default {
   props: {
     detail: Object,
   },
+  methods: {
+    handleSearch(searchArray) {
+      this.$emit("searchArray", searchArray);
+    },
+  },
   computed: {
     isExist: function () {
-      if (window.location.pathname.split("/")[1] === this.detail.idTitle) {
+      if (
+        window.location.pathname === "/" ||
+        window.location.pathname === "/category"
+      ) {
         return true;
       } else {
         return false;

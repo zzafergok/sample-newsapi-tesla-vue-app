@@ -55,10 +55,16 @@ export default {
   data: function () {
     return {
       detail: {},
+      searchDetail: {},
     };
   },
   mounted: function () {
-    this.detail = JSON.parse(localStorage.getItem("detail"));
+    this.searchDetail = JSON.parse(localStorage.getItem("searchDetail"));
+    if (this.searchDetail) {
+      this.detail = this.searchDetail;
+    } else {
+      this.detail = JSON.parse(localStorage.getItem("detail"));
+    }
   },
 };
 </script>
