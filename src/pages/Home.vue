@@ -1,6 +1,7 @@
 <template>
   <div>
     <Navbar :detail="detail" @searchArray="handleSearch" />
+    <Category />
     <list-item
       :item="tesla"
       :searchedArray="searchedArray"
@@ -12,15 +13,17 @@
 </template>
 
 <script>
-import ListItem from "../components/ListItem.vue";
 import Navbar from "../components/Navbar.vue";
+import Category from "../components/Category.vue";
+import ListItem from "../components/ListItem.vue";
 import Footer from "../components/Footer.vue";
 import { mapState } from "vuex";
 export default {
   name: "home-page",
   components: {
-    ListItem,
     Navbar,
+    Category,
+    ListItem,
     Footer,
   },
   data: function () {
@@ -112,11 +115,8 @@ export default {
             ""
           );
           let elementNewUrl = elementSplitUrl.replace(/\s/g, "-");
-          console.log("elementNewUrl", elementNewUrl);
 
           if (elementNewUrl === newUrl) {
-            console.log("calistim");
-
             let newDetail = {
               idTitle: elementNewUrl,
               title: element.title,

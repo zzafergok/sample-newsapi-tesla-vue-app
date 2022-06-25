@@ -7,7 +7,16 @@
       v-on:keyup.enter="onEnter"
       :placeholder="search.length > 0 ? '' : 'Please enter at least one word'"
     />
-    <button @click="handleClick">Search</button>
+    <button
+      :class="[
+        search.length > 0
+          ? 'search-button'
+          : 'search-button search-button-word',
+      ]"
+      @click="handleClick"
+    >
+      Search
+    </button>
   </div>
 </template>
 
@@ -60,6 +69,7 @@ div {
     padding: 0.5rem;
     font-size: 1rem;
     font-weight: 600;
+    font-family: "Rokkitt", serif;
     color: #000;
     width: 70%;
     margin-right: 0.5rem;
