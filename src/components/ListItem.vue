@@ -1,10 +1,20 @@
 <template>
   <div class="container container-list-item">
-    <div class="row">
+    <div class="row" v-if="searchedArray.length > 0">
       <Item
-        v-for="(teslaItem, index) in item"
+        v-for="(searchItem, index) in searchedArray"
         :key="index"
-        :item="teslaItem"
+        :item="searchItem"
+        :storageTesla="storageTesla"
+        @clicked="handleClick"
+      />
+    </div>
+    <div class="row" v-else>
+      <Item
+        v-for="(teslasItem, index) in item"
+        :key="index"
+        :item="teslasItem"
+        :storageTesla="storageTesla"
         @clicked="handleClick"
       />
     </div>
@@ -17,6 +27,8 @@ export default {
   name: "list-item",
   props: {
     item: Array,
+    searchedArray: Array,
+    storageTesla: Array,
   },
   components: {
     Item,
